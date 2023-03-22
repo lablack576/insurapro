@@ -1,0 +1,93 @@
+.login .left {
+    background-color: #42a867;
+    background-image: url("../../assets//svg/bg.svg");
+    background-repeat: no-repeat;
+    background-position: 50% 0;
+    background-size: cover;
+}
+
+.login .left .logo {
+    width: 24%;
+}
+
+.login .right {
+    background-color: #fff;
+    flex-direction: column;
+}
+
+.login .right h1 {
+    font-size: 4.8rem;
+    font-weight: 400;
+    letter-spacing: -0.5px;
+    margin-bottom: 1.2rem;
+    text-align: center;
+}
+
+.login .right p {
+    color: #ccc;
+    font-size: 1.6rem;
+    font-weight: 200;
+    line-height: 1.6;
+    width: 60%;
+    text-align: center;
+}
+
+.login .right .desc span {
+    font-weight: 400;
+}
+
+.login .right form {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 3.6rem;
+}
+
+.login .right .input_links {
+    width: 100%;
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.8rem;
+}
+
+.login .right .input_links p {
+    width: fit-content;
+    font-size: 1.2rem;
+}
+
+.login .right .input_links p span {
+    text-decoration: underline;
+    cursor: pointer;
+}
+.login .right .footer {
+    font-size: 1.2rem;
+    position: absolute;
+    bottom: 2.4rem;
+}
+.login .right .footer span {
+    font-weight: 400;
+}
+
+.reveal {
+    position: relative;
+    opacity: 0;
+}
+
+.reveal08 {
+    transform: translateY(-180px);
+    transition: all 0.8s ease;
+}
+
+.reveal12 {
+    transform: translateY(-180px);
+    transition: all 1.2s ease;
+}
+
+.reveal.active {
+    transform: translateY(0px);
+    opacity: 1;
+}

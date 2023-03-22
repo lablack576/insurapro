@@ -1,0 +1,64 @@
+.register .left {
+    background-color: #42a867;
+    background-image: url("../../assets//svg/bg.svg");
+    background-repeat: no-repeat;
+    background-position: 50% 0;
+    background-size: cover;
+}
+
+.register .left .logo {
+    width: 24%;
+}
+
+.register .right {
+    background-color: #fff;
+    flex-direction: column;
+}
+
+.register .right h1 {
+    font-size: 4.8rem;
+    font-weight: 400;
+    letter-spacing: -0.5px;
+    margin-bottom: 1.2rem;
+    text-align: center;
+}
+
+.register .right p {
+    color: #ccc;
+    font-size: 1.6rem;
+    font-weight: 200;
+    line-height: 1.6;
+    width: 60%;
+    text-align: center;
+}
+
+.register .right form {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 3.6rem;
+}
+
+.register .back {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    font-size: 1.6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.6rem;
+    cursor: pointer;
+    background-color: #42a867;
+    color: #fff;
+    border-radius: 4px;
+    transition: 0.3s;
+}
+
+.register .back:hover {
+    background-color: #399a5d;
+}

@@ -1,13 +1,108 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/** Colors :
+
+Primary : #42a867
+Tints : #f5fbf7
+Shades : #b3dec6, #399a5d
+Text : #111
+Grey : #ccc
+
+**/
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+html {
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #fff;
+    font-family: "Poppins", sans-serif;
+    line-height: 1;
+    font-weight: 400;
+    font-size: 1.6rem;
+    color: #111111;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+/* Reusable Styling */
+
+.divider {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Components Styling */
+
+.button_component {
+    background-color: #42a867;
+    color: #fff;
+    border: none;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-size: 2rem;
+    width: 100%;
+    padding: 1.2rem 2.4rem;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.6s;
+}
+
+.button_component:hover {
+    background-color: #399a5d;
+}
+
+.input_component {
+    width: 100%;
+    position: relative;
+}
+
+.input_component input {
+    background-color: #f5fbf7;
+    color: #111111;
+    border: none;
+    font-family: "Poppins", sans-serif;
+    font-weight: 200;
+    font-size: 2rem;
+    width: 100%;
+    padding: 1.2rem 2.4rem;
+    border-radius: 8px;
+}
+
+.input_component input::placeholder {
+    color: #ccc;
+}
+
+.input_component input:-ms-input-placeholder {
+    color: #ccc;
+}
+
+.input_component input::-ms-input-placeholder {
+    color: #ccc;
+}
+
+.input_component svg {
+    position: absolute;
+    width: 2.4rem;
+    height: 2.4rem;
+    right: 2rem;
+    top: 1.6rem;
+    color: #ccc;
 }
