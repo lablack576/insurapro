@@ -2,7 +2,7 @@
 
 Primary : #42a867
 Tints : #f5fbf7
-Shades : #b3dec6, #399a5d
+Shades : #b3dec6, #399a5d, #2e8d51
 Text : #111
 Grey : #ccc
 
@@ -105,4 +105,125 @@ ul {
     right: 2rem;
     top: 1.6rem;
     color: #ccc;
+}
+
+.main_tab {
+    display: grid;
+    grid-template-columns: 1.4fr 8fr;
+}
+
+.main_tab .left {
+    background-color: #42a867;
+    background-image: url("./assets/svg/bg.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: scroll;
+}
+
+.main_tab .right {
+    display: grid;
+    grid-template-rows: 2fr 24fr;
+    justify-content: initial;
+}
+
+.main_tab .right .content {
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
+}
+
+.main_tab .right .content {
+    background-color: #f5fbf7;
+    padding: 2.4rem;
+}
+
+.main_tab .right .tab {
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.4rem 2.4rem;
+    position: relatve;
+}
+
+.main_tab .right .tab .profil {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.4rem;
+    font-weight: 500;
+}
+
+.main_tab .right .tab .profil span,
+.main_tab .right .tab .profil svg {
+    cursor: pointer;
+}
+
+.main_tab .right .tab .list {
+    position: absolute;
+    z-index: 99;
+    background-color: #fff;
+    width: fit-content;
+    height: fit-content;
+    padding: 1.2rem 3.6rem;
+    font-size: 1.6rem;
+    right: 12px;
+    top: 58.77px;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1rem;
+    transition: 0.3s;
+}
+
+.main_tab .right .tab .list li {
+    cursor: pointer;
+}
+
+.sidebar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    padding: 4.8rem 1.2rem;
+}
+
+.sidebar ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.sidebar ul li {
+    background-color: #399a5d;
+    color: #fff;
+    padding: 1.2rem 2.4rem;
+    width: 100%;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 2rem;
+}
+
+.sidebar ul li:hover {
+    background-color: #2e8d51;
+}
+
+.sidebar .footer {
+    font-size: 1.2rem;
+    color: #f5fbf7;
+    line-height: 1.2;
+}
+.sidebar .footer span {
+    font-weight: 600;
+}
+
+.logo {
+    color: #fff;
+    font-size: 2.4rem;
+    text-align: center;
 }

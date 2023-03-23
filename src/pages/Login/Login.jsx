@@ -1,15 +1,19 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./Login.css";
-import { ReactComponent as Logo } from "../../assets/svg/insurance.svg";
 import Button from "../../components/Button/Button";
 import Input from "../../components/Input/Input";
 import { AiOutlineUser, AiOutlineLock } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
+import { reveal } from "../../utils/Animation.js";
 
 const Login = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
+
+    useEffect(() => {
+        reveal();
+    }, []);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -20,7 +24,7 @@ const Login = () => {
     return (
         <div className="login divider">
             <div className="left divider">
-                <Logo className="logo" fill="white" stroke="white" />
+                <h2 className="logo">InsuraPro</h2>
             </div>
             <div className="right divider">
                 <h1 className="reveal reveal12">Hello Again !</h1>
@@ -61,7 +65,7 @@ const Login = () => {
                     <Button text="Login" type="submit" />
                 </form>
                 <p className="footer">
-                    To reset your password, please contact us at
+                    Contact us at
                     <span> contact.geniuswave@gmail.com</span>
                 </p>
             </div>

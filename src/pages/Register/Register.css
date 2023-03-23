@@ -7,7 +7,7 @@
 }
 
 .register .left .logo {
-    width: 24%;
+    font-size: 4.8rem;
 }
 
 .register .right {
@@ -61,4 +61,13 @@
 
 .register .back:hover {
     background-color: #399a5d;
+}
+
+.register .right .footer {
+    font-size: 1.2rem;
+    position: absolute;
+    bottom: 2.4rem;
+}
+.register .right .footer span {
+    font-weight: 400;
 }

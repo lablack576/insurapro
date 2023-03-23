@@ -1,0 +1,11 @@
+.ClientsContent .header {
+    display: grid;
+    grid-template-columns: 24fr 2fr;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.ClientsContent .header Input {
+    background-color: #fff;
+}

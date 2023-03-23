@@ -4,10 +4,12 @@ import Home from "./pages/Home/Home";
 import Register from "./pages/Register/Register";
 import PrivateRoute from "./routes/PrivateRoute";
 import PublicRoute from "./routes/PublicRoute";
-import { reveal } from "./utils/Animation.js";
+import Accidents from "./pages/Accidents/Accidents";
+import Clients from "./pages/Clients/Clients";
+import Users from "./pages/Users/Users";
+import Settings from "./pages/Settings/Settings";
 
 function App() {
-    reveal();
     return (
         <BrowserRouter>
             <Routes>
@@ -15,6 +17,27 @@ function App() {
                     path="/"
                     exact
                     element={<PrivateRoute Component={Home} />}
+                />
+
+                <Route
+                    path="/clients"
+                    exact
+                    element={<PrivateRoute Component={Clients} />}
+                />
+                <Route
+                    path="/accidents"
+                    exact
+                    element={<PrivateRoute Component={Accidents} />}
+                />
+                <Route
+                    path="/users"
+                    exact
+                    element={<PrivateRoute Component={Users} />}
+                />
+                <Route
+                    path="/settings"
+                    exact
+                    element={<PrivateRoute Component={Settings} />}
                 />
                 <Route
                     path="/login"

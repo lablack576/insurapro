@@ -1,0 +1,71 @@
+.HomeContent .headerDesc {
+    color: #111;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+}
+
+.HomeContent .welcomeDesc {
+    color: #ccc;
+    font-weight: 200;
+}
+
+.HomeContent .stats {
+    width: 100%;
+    height: fit-content;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.8rem;
+    margin-top: 2.4rem;
+}
+
+.HomeContent .stats .stat-card {
+    background-color: #fff;
+    padding: 2.4rem;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.HomeContent .stats .stat-card h3 {
+    font-size: 2.4rem;
+    color: #111;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    margin-bottom: 1.2rem;
+}
+
+.HomeContent .stats .stat-card p {
+    font-size: 3.6rem;
+    color: #2e8d51;
+}
+
+.HomeContent .stats .stat-card span {
+    font-size: 1.4rem;
+    color: #111;
+    font-weight: 600;
+    position: relative;
+    left: 0.4rem;
+    top: -0.8rem;
+}
+
+.HomeContent .stats .stat-card svg {
+    font-size: 6rem;
+    background-color: #b3dec6;
+    color: #fff;
+    padding: 1.2rem;
+    border-radius: 100%;
+    transition: 0.3s;
+}
+
+.HomeContent .stats .stat-card svg:hover {
+    background-color: #399a5d;
+}
+
+.stat-chart {
+    background-color: #fff;
+    padding: 2.4rem;
+    border-radius: 8px;
+    grid-column: 1/3;
+}

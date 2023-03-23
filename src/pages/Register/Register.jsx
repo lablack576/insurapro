@@ -1,6 +1,5 @@
 import "./Register.css";
-import { useState } from "react";
-import { ReactComponent as Logo } from "../../assets/svg/insurance.svg";
+import { useState, useEffect } from "react";
 import Button from "../../components/Button/Button";
 import Input from "../../components/Input/Input";
 import {
@@ -10,6 +9,7 @@ import {
     AiOutlineRollback,
 } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
+import { reveal } from "../../utils/Animation.js";
 
 const Register = () => {
     const [username, setUsername] = useState("");
@@ -18,9 +18,15 @@ const Register = () => {
 
     const navigate = useNavigate();
 
+    useEffect(() => {
+        reveal();
+    }, []);
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log("clicked");
+        console.log(username);
+        console.log(password);
+        console.log(company);
     };
 
     return (
@@ -35,7 +41,7 @@ const Register = () => {
                 <AiOutlineRollback />
             </p>
             <div className="left divider">
-                <Logo className="logo" fill="white" stroke="white" />
+                <h2 className="logo">InsuraPro</h2>
             </div>
             <div className="right divider">
                 <h1 className="reveal reveal12">Join Us !</h1>
@@ -70,6 +76,10 @@ const Register = () => {
                     />
                     <Button text="Register" type="submit" />
                 </form>
+                <p className="footer">
+                    Contact us at
+                    <span> contact.geniuswave@gmail.com</span>
+                </p>
             </div>
         </div>
     );

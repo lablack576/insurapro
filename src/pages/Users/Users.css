@@ -1,0 +1,40 @@
+.UsersContent {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.UsersContent .card {
+    width: 100%;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 1.2rem 2.4rem;
+}
+
+.UsersContent .card form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.UsersContent .card h3 {
+    font-size: 2rem;
+    font-weight: 400;
+    margin: 2rem 0;
+}
+
+.user_type {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.user_type li {
+    background-color: #f5fbf7;
+    color: #ccc;
+    padding: 1.2rem;
+    font-weight: 200;
+    border-radius: 8px;
+    cursor: pointer;
+}
