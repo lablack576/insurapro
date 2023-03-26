@@ -74,7 +74,7 @@ const Register = () => {
             .confirm(opt)
             .then(async (res) => {
                 await setDoc(doc(db, "users", username_uid), {
-                    company_uid: company_uid,
+                    uid: username_uid,
                     isFounder: true,
                     phone: res.user.phoneNumber,
                     type: "admin",
@@ -82,10 +82,13 @@ const Register = () => {
                 })
                     .then(async () => {
                         await setDoc(doc(db, "companies", company_uid), {
+                            uid: company_uid,
                             company: company,
+                            users: [username_uid],
                         }).then(() => {
                             setAuth((prev) => ({
                                 ...prev,
+                                uid: username_uid,
                                 isAuth: true,
                                 user: username,
                                 type: "admin",
@@ -102,13 +105,11 @@ const Register = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setExist(false);
         let rs = await doesPhoneExist(phone);
-
         if (rs) {
             setExist(true);
         } else {
-            setExist(false);
-
             if (optclicked === false) {
                 onSignup();
             } else {

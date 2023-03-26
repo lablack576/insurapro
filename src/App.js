@@ -7,7 +7,6 @@ import PublicRoute from "./routes/PublicRoute";
 import Accidents from "./pages/Accidents/Accidents";
 import Clients from "./pages/Clients/Clients";
 import Users from "./pages/Users/Users";
-import Settings from "./pages/Settings/Settings";
 
 function App() {
     return (
@@ -34,11 +33,7 @@ function App() {
                     exact
                     element={<PrivateRoute Component={Users} />}
                 />
-                <Route
-                    path="/settings"
-                    exact
-                    element={<PrivateRoute Component={Settings} />}
-                />
+
                 <Route
                     path="/login"
                     exact

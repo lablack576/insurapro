@@ -7,6 +7,7 @@ export const auth = atom({
     key: "auth",
     default: {
         phone: null,
+        uid: null,
         user: null,
         type: null,
         isAuth: false,

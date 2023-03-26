@@ -4,21 +4,63 @@ import "./Users.css";
 import Button from "../../components/Button/Button";
 import Input from "../../components/Input/Input";
 import { useState } from "react";
-import { AiOutlineUser, AiOutlineLock } from "react-icons/ai";
+import { AiOutlineUser, AiOutlinePhone } from "react-icons/ai";
+import { db } from "../../atoms/firebase";
+import {
+    collection,
+    query,
+    where,
+    getDocs,
+    doc,
+    setDoc,
+    arrayUnion,
+    updateDoc,
+} from "firebase/firestore";
+import { uid } from "uid";
 
 const UsersContent = () => {
-    const { type } = useRecoilValue(auth);
+    const user = useRecoilValue(auth);
     const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
+    const [phone, setPhone] = useState("");
     const [userType, setUserType] = useState("admin");
+    const [companyId, setCompanyID] = useState();
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(username);
-        console.log(password);
-        console.log(userType);
+    const getCompanyInfoById = async () => {
+        const q = query(
+            collection(db, "companies"),
+            where("users", "array-contains", user.uid)
+        );
+        const querySnapshot = await getDocs(q);
+        setCompanyID(
+            querySnapshot.docs[0]._document.data.value.mapValue.fields.uid
+                .stringValue
+        );
     };
-    return type === "admin" ? (
+    getCompanyInfoById();
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        let username_uid = uid(16);
+
+        await setDoc(doc(db, "users", username_uid), {
+            uid: username_uid,
+            isFounder: false,
+            phone: phone,
+            type: userType,
+            username: username,
+        })
+            .then(async () => {
+                const docRef = doc(db, "companies", companyId);
+                await updateDoc(docRef, {
+                    users: arrayUnion(username_uid),
+                });
+            })
+            .then(() => {
+                setUsername("");
+                setPhone("");
+                setUserType("");
+            });
+    };
+    return user.type === "admin" ? (
         <div className="UsersContent">
             <div className="card">
                 <h3>Users Details</h3>
@@ -35,12 +77,13 @@ const UsersContent = () => {
                         onChange={setUsername}
                     />
                     <Input
-                        name="password"
-                        placeholder="Password"
-                        type="password"
-                        Icon={AiOutlineLock}
-                        value={password}
-                        onChange={setPassword}
+                        pattern="[+]{1}[1-9]{1,3}[0-9]{9}"
+                        name="phone"
+                        placeholder="+33 123 456 789"
+                        type="tel"
+                        Icon={AiOutlinePhone}
+                        value={phone}
+                        onChange={setPhone}
                     />
                     <ul className="user_type">
                         <li

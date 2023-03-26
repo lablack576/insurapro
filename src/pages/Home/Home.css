@@ -62,10 +62,3 @@
 .HomeContent .stats .stat-card svg:hover {
     background-color: #399a5d;
 }
-
-.stat-chart {
-    background-color: #fff;
-    padding: 2.4rem;
-    border-radius: 8px;
-    grid-column: 1/3;
-}

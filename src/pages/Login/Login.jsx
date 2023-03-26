@@ -48,10 +48,20 @@ const Login = () => {
             });
     };
 
+    const getUserIdByPhone = async (phone) => {
+        const q = query(collection(db, "users"), where("phone", "==", phone));
+
+        const querySnapshot = await getDocs(q);
+
+        return querySnapshot.docs[0]._document.data.value.mapValue.fields.uid
+            .stringValue;
+    };
+
     const onOTPVerify = async () => {
         await window.confirmationResult
             .confirm(opt)
             .then(async (res) => {
+                let uid = await getUserIdByPhone(res.user.phoneNumber);
                 setAuth((prev) => ({
                     ...prev,
                     isAuth: true,
@@ -60,6 +70,7 @@ const Login = () => {
                     type: user[0]._document.data.value.mapValue.fields.type
                         .stringValue,
                     phone: res.user.phoneNumber,
+                    uid: uid,
                 }));
             })
             .catch((err) => console.log(err));
@@ -71,9 +82,9 @@ const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setExist(false);
         let rs = await doesPhoneExist(phone);
         if (rs) {
-            setExist(false);
             if (optclicked === false) {
                 onSignup();
             } else {

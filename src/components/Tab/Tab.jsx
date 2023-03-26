@@ -3,13 +3,11 @@ import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import { useRecoilValue } from "recoil";
 import { auth } from "../../atoms/auth";
 import Sidebar from "../Sidebar/Sidebar";
-import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 
 const Tab = ({ name, content }) => {
     const { user } = useRecoilValue(auth);
     const [isActive, setIsActive] = useState(false);
-    const navigate = useNavigate();
     const setAuth = useSetRecoilState(auth);
 
     const handleClick = () => {
@@ -37,19 +35,13 @@ const Tab = ({ name, content }) => {
                     >
                         <li
                             onClick={() => {
-                                navigate("/settings");
-                            }}
-                        >
-                            Settings
-                        </li>
-                        <li
-                            onClick={() => {
                                 setAuth((prev) => ({
                                     ...prev,
-                                    isAuth: false,
+                                    phone: null,
+                                    uid: null,
                                     user: null,
                                     type: null,
-                                    phone: null,
+                                    isAuth: false,
                                 }));
                             }}
                         >
