@@ -71,3 +71,21 @@
 .register .right .footer span {
     font-weight: 400;
 }
+
+.register .right .input_links {
+    width: 100%;
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.8rem;
+}
+
+.register .right .input_links p {
+    width: fit-content;
+    font-size: 1.2rem;
+}
+
+.register .right .input_links p span {
+    text-decoration: underline;
+    cursor: pointer;
+}

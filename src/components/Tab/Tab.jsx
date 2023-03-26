@@ -4,11 +4,13 @@ import { useRecoilValue } from "recoil";
 import { auth } from "../../atoms/auth";
 import Sidebar from "../Sidebar/Sidebar";
 import { useNavigate } from "react-router-dom";
+import { useSetRecoilState } from "recoil";
 
 const Tab = ({ name, content }) => {
     const { user } = useRecoilValue(auth);
     const [isActive, setIsActive] = useState(false);
     const navigate = useNavigate();
+    const setAuth = useSetRecoilState(auth);
 
     const handleClick = () => {
         setIsActive((current) => !current);
@@ -40,7 +42,19 @@ const Tab = ({ name, content }) => {
                         >
                             Settings
                         </li>
-                        <li>Log out</li>
+                        <li
+                            onClick={() => {
+                                setAuth((prev) => ({
+                                    ...prev,
+                                    isAuth: false,
+                                    user: null,
+                                    type: null,
+                                    phone: null,
+                                }));
+                            }}
+                        >
+                            Log out
+                        </li>
                     </ul>
                 </div>
                 <div className="content">{content}</div>

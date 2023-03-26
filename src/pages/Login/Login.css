@@ -91,3 +91,12 @@
     transform: translateY(0px);
     opacity: 1;
 }
+
+#exist {
+    text-align: left;
+    width: 100%;
+    color: #be4040;
+    font-size: 1.2rem;
+    font-weight: 200;
+    opacity: 0.8;
+}

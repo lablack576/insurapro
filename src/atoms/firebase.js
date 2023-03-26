@@ -1,19 +1,18 @@
-import firebase from "firebase/app";
-import "firebase/database";
+import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyCd8hh3SGgfnOdVLza4fzpOAZwcmRhUBaA",
-    authDomain: "insurapro-326ac.firebaseapp.com",
-    databaseURL:
-        "https://insurapro-326ac-default-rtdb.europe-west1.firebasedatabase.app",
-    projectId: "insurapro-326ac",
-    storageBucket: "insurapro-326ac.appspot.com",
-    messagingSenderId: "872372284193",
-    appId: "1:872372284193:web:a9ba80c842b1ea0303ec60",
+    apiKey: process.env.REACT_APP_API_KEY,
+    authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+    projectId: process.env.REACT_APP_PROJECT_ID,
+    storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+    messagingSenderId: process.env.REACT_APP_M_SENDER_ID,
+    appId: process.env.REACT_APP_ID,
 };
 
-firebase.initializeApp(firebaseConfig);
-const databaseRef = firebase.database().ref();
+const app = initializeApp(firebaseConfig);
+const authentication = getAuth(app);
+const db = getFirestore(app);
 
-export const notesRef = databaseRef.child("notes");
-export default firebase;
+export { authentication, db };
