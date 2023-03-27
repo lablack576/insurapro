@@ -7,10 +7,7 @@ export const SideBarItems = [
         text: "Clients",
         target: "/clients",
     },
-    {
-        text: "Accidents",
-        target: "/accidents",
-    },
+
     {
         text: "Users",
         target: "/users",

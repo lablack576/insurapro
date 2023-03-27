@@ -4,9 +4,9 @@ import Home from "./pages/Home/Home";
 import Register from "./pages/Register/Register";
 import PrivateRoute from "./routes/PrivateRoute";
 import PublicRoute from "./routes/PublicRoute";
-import Accidents from "./pages/Accidents/Accidents";
 import Clients from "./pages/Clients/Clients";
 import Users from "./pages/Users/Users";
+import View from "./pages/Clients/View/View";
 
 function App() {
     return (
@@ -24,9 +24,9 @@ function App() {
                     element={<PrivateRoute Component={Clients} />}
                 />
                 <Route
-                    path="/accidents"
+                    path="/clients/view/:clientUID"
                     exact
-                    element={<PrivateRoute Component={Accidents} />}
+                    element={<PrivateRoute Component={View} />}
                 />
                 <Route
                     path="/users"

@@ -26,6 +26,7 @@ body {
     font-weight: 400;
     font-size: 1.6rem;
     color: #111111;
+    min-width: 1080px;
 }
 
 a {
@@ -49,7 +50,6 @@ ul {
 /* Components Styling */
 
 .button_component {
-    background-color: #42a867;
     color: #fff;
     border: none;
     font-family: "Poppins", sans-serif;
@@ -63,10 +63,6 @@ ul {
     border-radius: 8px;
     cursor: pointer;
     transition: 0.6s;
-}
-
-.button_component:hover {
-    background-color: #399a5d;
 }
 
 .input_component {

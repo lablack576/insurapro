@@ -1,0 +1,53 @@
+.container {
+    display: grid;
+    grid-template-columns: afr;
+    justify-items: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.container .div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    width: 100%;
+    padding: 1.2rem 2.4rem;
+    border-radius: 8px;
+}
+
+.container .table {
+    flex-direction: column;
+}
+
+.table ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 2.4rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    width: 100%;
+}
+
+.table .main {
+    background-color: #42a867 !important;
+    color: #fff;
+}
+
+.table ul:nth-child(2n + 1) {
+    background-color: #eee;
+}
+
+.table ul:nth-child(2n) {
+    background-color: #fff;
+}
+
+.table ul li {
+    width: 14rem;
+}
+
+.table .addform li {
+    width: 100%;
+    margin-left: 0.4rem;
+}

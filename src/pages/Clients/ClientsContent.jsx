@@ -9,13 +9,15 @@ import { useRecoilValue } from "recoil";
 import { auth } from "../../atoms/auth";
 import ClipLoader from "react-spinners/ClipLoader";
 import AddClients from "./AddClients";
+import { AiOutlineEye } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
 
 const ClientsContent = () => {
     const [search, setSearch] = useState();
     const [clients, setClients] = useState();
     const [companyUID, setCompanyUID] = useState();
     const [add, setAdd] = useState(true);
-
+    const navigate = useNavigate();
     const user = useRecoilValue(auth);
 
     const getCompanyInfoById = async () => {
@@ -72,7 +74,7 @@ const ClientsContent = () => {
                             <li>First name</li>
                             <li>Last name</li>
                             <li>Phone number</li>
-                            <li>Biens</li>
+                            <li>Assets</li>
                             <li>Accidents</li>
                         </ul>
                         {clients.map((item, idx) => {
@@ -83,104 +85,134 @@ const ClientsContent = () => {
 
                             if (!search) {
                                 return (
-                                    <ul key={idx}>
-                                        <li>
-                                            {
-                                                item._document.data.value
-                                                    .mapValue.fields.first_name
-                                                    .stringValue
-                                            }
-                                        </li>
-                                        <li>
-                                            {
-                                                item._document.data.value
-                                                    .mapValue.fields.last_name
-                                                    .stringValue
-                                            }
-                                        </li>
-                                        <li>
-                                            {
-                                                item._document.data.value
-                                                    .mapValue.fields.phone
-                                                    .stringValue
-                                            }
-                                        </li>
+                                    <div key={idx}>
+                                        <ul>
+                                            <li>
+                                                {
+                                                    item._document.data.value
+                                                        .mapValue.fields
+                                                        .first_name.stringValue
+                                                }
+                                            </li>
+                                            <li>
+                                                {
+                                                    item._document.data.value
+                                                        .mapValue.fields
+                                                        .last_name.stringValue
+                                                }
+                                            </li>
+                                            <li>
+                                                {
+                                                    item._document.data.value
+                                                        .mapValue.fields.phone
+                                                        .stringValue
+                                                }
+                                            </li>
 
-                                        <li>
-                                            {Object.keys(
-                                                item._document.data.value
-                                                    .mapValue.fields.assets
-                                                    .arrayValue
-                                            ).length
-                                                ? item._document.data.value
-                                                      .mapValue.fields.assets
-                                                      .arrayValue.values.length
-                                                : "0"}
-                                        </li>
-                                        <li>
-                                            {Object.keys(
-                                                item._document.data.value
-                                                    .mapValue.fields.accidents
-                                                    .arrayValue
-                                            ).length
-                                                ? item._document.data.value
-                                                      .mapValue.fields.accidents
-                                                      .arrayValue.values.length
-                                                : "0"}
-                                        </li>
-                                    </ul>
+                                            <li>
+                                                {Object.keys(
+                                                    item._document.data.value
+                                                        .mapValue.fields.assets
+                                                        .arrayValue
+                                                ).length
+                                                    ? item._document.data.value
+                                                          .mapValue.fields
+                                                          .assets.arrayValue
+                                                          .values.length
+                                                    : "0"}
+                                            </li>
+                                            <li>
+                                                {Object.keys(
+                                                    item._document.data.value
+                                                        .mapValue.fields
+                                                        .accidents.arrayValue
+                                                ).length
+                                                    ? item._document.data.value
+                                                          .mapValue.fields
+                                                          .accidents.arrayValue
+                                                          .values.length
+                                                    : "0"}
+                                            </li>
+                                        </ul>
+                                        <AiOutlineEye
+                                            onClick={() => {
+                                                navigate(
+                                                    "/clients/view/" +
+                                                        item._document.data
+                                                            .value.mapValue
+                                                            .fields.uid
+                                                            .stringValue
+                                                );
+                                            }}
+                                        />
+                                    </div>
                                 );
                             } else if (
                                 search.toLowerCase() == first_name ||
                                 search.toLowerCase() == last_name
                             ) {
                                 return (
-                                    <ul key={idx}>
-                                        <li>
-                                            {
-                                                item._document.data.value
-                                                    .mapValue.fields.first_name
-                                                    .stringValue
-                                            }
-                                        </li>
-                                        <li>
-                                            {
-                                                item._document.data.value
-                                                    .mapValue.fields.last_name
-                                                    .stringValue
-                                            }
-                                        </li>
-                                        <li>
-                                            {
-                                                item._document.data.value
-                                                    .mapValue.fields.phone
-                                                    .stringValue
-                                            }
-                                        </li>
+                                    <div key={idx}>
+                                        <ul>
+                                            <li>
+                                                {
+                                                    item._document.data.value
+                                                        .mapValue.fields
+                                                        .first_name.stringValue
+                                                }
+                                            </li>
+                                            <li>
+                                                {
+                                                    item._document.data.value
+                                                        .mapValue.fields
+                                                        .last_name.stringValue
+                                                }
+                                            </li>
+                                            <li>
+                                                {
+                                                    item._document.data.value
+                                                        .mapValue.fields.phone
+                                                        .stringValue
+                                                }
+                                            </li>
 
-                                        <li>
-                                            {Object.keys(
-                                                item._document.data.value
-                                                    .mapValue.fields.assets
-                                                    .arrayValue
-                                            ).length
-                                                ? item._document.data.value
-                                                      .mapValue.fields.assets
-                                                      .arrayValue.values.length
-                                                : "0"}
-                                        </li>
-                                        <li>
-                                            {Object.keys(
-                                                item._document.data.value
-                                                    .mapValue.fields.accidents
-                                                    .arrayValue
-                                            ).length
-                                                ? item._document.data.value
-                                                      .mapValue.fields.accidents
-                                                      .arrayValue.values.length
-                                                : "0"}
-                                        </li>
-                                    </ul>
+                                            <li>
+                                                {Object.keys(
+                                                    item._document.data.value
+                                                        .mapValue.fields.assets
+                                                        .arrayValue
+                                                ).length
+                                                    ? item._document.data.value
+                                                          .mapValue.fields
+                                                          .assets.arrayValue
+                                                          .values.length
+                                                    : "0"}
+                                            </li>
+                                            <li>
+                                                {Object.keys(
+                                                    item._document.data.value
+                                                        .mapValue.fields
+                                                        .accidents.arrayValue
+                                                ).length
+                                                    ? item._document.data.value
+                                                          .mapValue.fields
+                                                          .accidents.arrayValue
+                                                          .values.length
+                                                    : "0"}
+                                            </li>
+                                        </ul>
+                                        <AiOutlineEye
+                                            onClick={() => {
+                                                navigate(
+                                                    "/clients/view/" +
+                                                        item._document.data
+                                                            .value.mapValue
+                                                            .fields.uid
+                                                            .stringValue
+                                                );
+                                            }}
+                                        />{" "}
+                                    </div>
                                 );
                             }
                         })}
@@ -208,6 +240,7 @@ const ClientsContent = () => {
                     }}
                 >
                     <Button
+                        background="#ce3838"
                         text="Return"
                         type="button"
                         onClick={() => {

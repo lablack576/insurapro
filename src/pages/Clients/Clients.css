@@ -35,3 +35,14 @@
 .ClientsContent .table ul li {
     width: 14rem;
 }
+
+.table div {
+    position: relative;
+}
+
+.table svg {
+    position: absolute;
+    right: 2rem;
+    top: 1.3rem;
+    cursor: pointer;
+}

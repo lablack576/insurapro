@@ -90,7 +90,7 @@ const HomeContent = () => {
                         </div>
                         <div className="stat-card">
                             <div>
-                                <h3>Biens assurés</h3>
+                                <h3>Assets</h3>
                                 <p>{assets.length}</p>
                             </div>
                             <BsCarFront />
