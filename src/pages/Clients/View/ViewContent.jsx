@@ -19,6 +19,7 @@ import { auth } from "../../../atoms/auth";
 
 const ViewContent = (cid) => {
     const [assets, setAssets] = useState();
+    const [accidents, setAccidents] = useState();
     const [mat, setMat] = useState();
     const [type, setType] = useState();
     const [insuDate, setInsuDate] = useState();
@@ -26,6 +27,14 @@ const ViewContent = (cid) => {
     const [relDate, setRelDate] = useState();
     const [purchDate, setPurchDate] = useState();
     const [companyUID, setCompanyUID] = useState();
+
+    // Accident state
+
+    const [accidentDate, setAccidentDate] = useState();
+    const [dedoValue, setDedoValue] = useState();
+    const [evalState, setEvalState] = useState();
+    const [payState, setPayState] = useState();
+
     const user = useRecoilValue(auth);
 
     const getCompanyInfoById = async () => {
@@ -52,9 +61,26 @@ const ViewContent = (cid) => {
         setAssets(querySnapshot.docs);
     };
 
+    const getAccidentsByClientUID = async () => {
+        const q = query(
+            collection(db, "accidents"),
+            where("client_uid", "==", cid.cid)
+        );
+        const querySnapshot = await getDocs(q);
+        setAccidents(querySnapshot.docs);
+    };
+
+    if (!accidents) {
+        getAccidentsByClientUID();
+    }
+
     if (!assets) {
         getAssetsByClientUID();
     }
+
+    const submitAccident = async (e) => {
+        e.preventDefault();
+    };
 
     const submitAsset = async (e) => {
         e.preventDefault();
@@ -201,7 +227,7 @@ const ViewContent = (cid) => {
                             </ul>
                         </form>
                         <ul className="main">
-                            <li>Registration number</li>
+                            <li>UID</li>
                             <li>Type</li>
                             <li>Insurance date</li>
                             <li>Expiration date</li>
@@ -216,9 +242,10 @@ const ViewContent = (cid) => {
                                     <li>
                                         {
                                             item._document.data.value.mapValue
-                                                .fields.mat.stringValue
+                                                .fields.uid.stringValue
                                         }
                                     </li>
+
                                     <li>
                                         {
                                             item._document.data.value.mapValue
@@ -266,9 +293,52 @@ const ViewContent = (cid) => {
                     </div>
                 )}
 
-                <div className="div table">
-                    <h3>Accidents</h3>
-                </div>
+                {accidents && (
+                    <div className="div table">
+                        <br />
+                        <h3>Accidents</h3>
+                        <br />
+                        <br /> <br />
+                        <ul className="main">
+                            <li>Date</li>
+                            <li>Compensation value</li>
+                            <li>Evaluation state</li>
+                            <li>Payment state</li>
+                        </ul>
+                        {accidents.map((item, idx) => {
+                            return (
+                                <ul key={idx}>
+                                    <li>
+                                        {
+                                            item._document.data.value.mapValue
+                                                .fields.accident_date
+                                                .stringValue
+                                        }
+                                    </li>
+                                    <li>
+                                        {
+                                            item._document.data.value.mapValue
+                                                .fields.dedo_value.integerValue
+                                        }
+                                    </li>
+                                    <li>
+                                        {item._document.data.value.mapValue
+                                            .fields.evaluation_state
+                                            .booleanValue
+                                            ? "Yes"
+                                            : "No"}
+                                    </li>
+                                    <li>
+                                        {item._document.data.value.mapValue
+                                            .fields.payment_state.booleanValue
+                                            ? "Yes"
+                                            : "No"}
+                                    </li>
+                                </ul>
+                            );
+                        })}
+                    </div>
+                )}
             </div>
         </>
     );
