@@ -5,14 +5,12 @@ import { auth } from "../../atoms/auth";
 import Sidebar from "../Sidebar/Sidebar";
 import { useSetRecoilState } from "recoil";
 import { getAuth, signOut } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
 
 const Tab = ({ name, content }) => {
     const { user } = useRecoilValue(auth);
     const [isActive, setIsActive] = useState(false);
     const setAuth = useSetRecoilState(auth);
     const authPhone = getAuth();
-    const navigate = useNavigate();
     const handleClick = () => {
         setIsActive((current) => !current);
     };

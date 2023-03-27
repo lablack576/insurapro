@@ -28,13 +28,6 @@ const ViewContent = (cid) => {
     const [purchDate, setPurchDate] = useState();
     const [companyUID, setCompanyUID] = useState();
 
-    // Accident state
-
-    const [accidentDate, setAccidentDate] = useState();
-    const [dedoValue, setDedoValue] = useState();
-    const [evalState, setEvalState] = useState();
-    const [payState, setPayState] = useState();
-
     const user = useRecoilValue(auth);
 
     const getCompanyInfoById = async () => {
@@ -77,10 +70,6 @@ const ViewContent = (cid) => {
     if (!assets) {
         getAssetsByClientUID();
     }
-
-    const submitAccident = async (e) => {
-        e.preventDefault();
-    };
 
     const submitAsset = async (e) => {
         e.preventDefault();
