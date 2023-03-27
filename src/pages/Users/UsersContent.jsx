@@ -36,7 +36,10 @@ const UsersContent = () => {
                 .stringValue
         );
     };
-    getCompanyInfoById();
+    if (!companyId) {
+        getCompanyInfoById();
+    }
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         let username_uid = uid(16);
@@ -62,9 +65,6 @@ const UsersContent = () => {
     };
     return user.type === "admin" ? (
         <div className="UsersContent">
-            <div className="card">
-                <h3>Users Details</h3>
-            </div>
             <div className="card">
                 <h3>Add new user</h3>
                 <form onSubmit={handleSubmit}>

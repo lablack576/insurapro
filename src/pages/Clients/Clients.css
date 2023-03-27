@@ -9,3 +9,29 @@
 .ClientsContent .header Input {
     background-color: #fff;
 }
+
+.ClientsContent .table ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 2.4rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+}
+
+.ClientsContent .table .main {
+    background-color: #42a867 !important;
+    color: #fff;
+}
+
+.ClientsContent .table ul:nth-child(2n + 1) {
+    background-color: #eee;
+}
+
+.ClientsContent .table ul:nth-child(2n) {
+    background-color: #fff;
+}
+
+.ClientsContent .table ul li {
+    width: 14rem;
+}
