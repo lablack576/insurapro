@@ -1,5 +1,5 @@
 const Input = ({
-    namelist,
+    name,
     list,
     placeholder,
     value,
