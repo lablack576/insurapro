@@ -1,70 +1,66 @@
-# Getting Started with Create React App
+# InsuraPro
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a management software for insurance companies, this is an internship prototype.
 
-## Available Scripts
+## Getting Started
 
-In the project directory, you can run:
+### Prerequisites
 
-### `npm start`
+To use this project, you will need:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- A Google account
+- Node.js installed on your computer
+- An IDE or text editor
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Creating a Firebase Project
 
-### `npm test`
+To create a Firebase project:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Go to the [Firebase Console](https://console.firebase.google.com/) and sign in with your Google account.
+2. Click on "Add project" and follow the prompts to create a new project.
+3. Once your project is created, click on "Authentication" in the left sidebar.
+4. Click on the "Sign-in method" tab and enable Phone authentication.
+5. Click on "Firestore Database" in the left sidebar and create a new Firestore database.
 
-### `npm run build`
+### Creating a Web App
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+To create a web app:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. In your Firebase project, click on the gear icon next to "Project Overview" in the left sidebar and select "Project settings".
+2. Scroll down to the "Your apps" section and click on "Add app".
+3. Select "Web" and follow the prompts to register your app.
+4. Copy the Firebase configuration settings for your app.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Downloading the Project
 
-### `npm run eject`
+To download the project:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. Clone the repository to your local machine.
+2. In the root directory of the project, create a new file called `.env`.
+3. In the `.env` file, add the Firebase configuration settings you copied earlier:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+`REACT_APP_API_KEY=[your API key]`<br />
+`REACT_APP_AUTH_DOMAIN=[your auth domain]`<br />
+`REACT_APP_PROJECT_ID=[your project ID]`<br />
+`REACT_APP_STORAGE_BUCKET=[your storage bucket]`<br />
+`REACT_APP_MESSAGING_SENDER_ID=[your messaging sender ID]`<br />
+`REACT_APP_APP_ID=[your app ID]`<br />
+`REACT_APP_MEASUREMENT_ID=[your measurement ID]`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Be sure to replace `[your API key]`, `[your auth domain]`, and so on with the actual values for your Firebase project.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+4. Run `npm install` to install the project dependencies.
 
-## Learn More
+### Running the App
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+To run the app:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. Run `npm start` in the root directory of the project.
+2. The app will open in your default browser.
 
-### Code Splitting
+### Building the App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+To build the app:
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. Run `npm run build` in the root directory of the project.
+2. The built app will be stored in the `build` folder.
