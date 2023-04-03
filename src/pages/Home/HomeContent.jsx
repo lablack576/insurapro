@@ -8,13 +8,42 @@ import {
 } from "react-icons/bs";
 import { useState } from "react";
 import { db } from "../../atoms/firebase";
-import { collection, query, where, getDocs } from "firebase/firestore";
+import { collection, query, where, getDocs, orderBy } from "firebase/firestore";
 import ClipLoader from "react-spinners/ClipLoader";
+import { Bar, Line } from "react-chartjs-2";
+import {
+    Chart as ChartJS,
+    CategoryScale,
+    LinearScale,
+    BarElement,
+    LineElement,
+    Title,
+    Tooltip,
+    Legend,
+    PointElement,
+} from "chart.js";
 
 const HomeContent = () => {
+    ChartJS.register(
+        CategoryScale,
+        LinearScale,
+        LineElement,
+        BarElement,
+        Title,
+        Tooltip,
+        Legend,
+        PointElement
+    );
+
     const user = useRecoilValue(auth);
     const [company, setCompany] = useState();
     const [clients, setClients] = useState();
+    const [monthlyClients, setMonthlyClients] = useState([
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    ]);
+    const [monthlyAssets, setMonthlyAssets] = useState([
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    ]);
     const [assets, setAssets] = useState();
     const [accidents, setAccidents] = useState();
     const getClientsByCompanyId = async (id) => {
@@ -72,6 +101,70 @@ const HomeContent = () => {
         getCompanyInfoById();
     }
 
+    const labels = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+    ];
+
+    const options = {
+        responsive: true,
+        plugins: {
+            legend: {
+                position: "top",
+            },
+            title: {
+                display: true,
+                text: "Monthly new clients",
+            },
+        },
+    };
+
+    const options2 = {
+        responsive: true,
+        plugins: {
+            legend: {
+                position: "top",
+            },
+            title: {
+                display: true,
+                text: "Monthly assets",
+            },
+        },
+    };
+
+    const data = {
+        labels,
+        datasets: [
+            {
+                label: "Clients",
+                data: monthlyClients,
+                backgroundColor: "#b3dec6",
+            },
+        ],
+    };
+
+    const data2 = {
+        labels,
+        datasets: [
+            {
+                label: "Assets",
+                data: monthlyAssets,
+                borderColor: "#399a5d",
+                backgroundColor: "#b3dec6",
+            },
+        ],
+    };
+
     return user.type === "admin" ? (
         company && clients && assets && accidents ? (
             <>
@@ -101,6 +194,14 @@ const HomeContent = () => {
                                 <p>{accidents.length}</p>
                             </div>
                             <BsFillExclamationTriangleFill />
+                        </div>
+                    </div>
+                    <div className="charts">
+                        <div>
+                            <Bar options={options} data={data} />
+                        </div>
+                        <div>
+                            <Line options={options2} data={data2} />
                         </div>
                     </div>
                 </div>

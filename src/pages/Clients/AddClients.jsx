@@ -20,14 +20,24 @@ const AddClients = (companyUID) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
+        const now = new Date();
+        const firestoreTimestamp = now.toLocaleString("en-US", {
+            month: "long",
+            day: "numeric",
+            year: "numeric",
+            hour: "numeric",
+            minute: "numeric",
+            second: "numeric",
+            timeZoneName: "short",
+            timeZone: "Europe/London", // set your desired timezone here
+        });
         let data = {
             uid: uid(16),
             user_uid: user.uid,
             phone: phone,
             last_name: lastName,
             first_name: firstName,
-            inscription_date: format(new Date(), "yyyy/mm/dd"),
+            inscription_date: firestoreTimestamp,
             birth_date: birth,
             company_uid: companyUID.companyUID,
             assets: [],
